@@ -43,7 +43,7 @@ as regression checks.
 | `play.py` | instructors | No | Runs a level |
 | `student.py` | students | Yes | Student implementation of `verify_evidence()` and `policy_checker()` |
 | `instructor.py` | instructors | No | Instructor implementation of `verify_evidence()` and `policy_checker()` (solution provided) |
-| `rot/` | instructors | Yes | Simulated hardware root of trust (see `rot/README.md`) |
+| `rot/` | instructors | Partially | Simulated hardware root of trust (see `rot/README.md`) |
 | `codecarbon/` | any (optional) | Yes | Measure the energy use and CO2 emissions of PyTorch training runs (see `codecarbon/README.md`) |
 | `pytorch/` | any (optional) | Yes | Measure the FLOP counts and CPU time of runs on an ML model with PyTorch (see `pytorch/README.md`)  |
 | `combined_runs/` | any (optional) | Yes | Run one training job with CodeCarbon and PyTorch together (see `combined_runs/README.md`) |
