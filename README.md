@@ -1,61 +1,61 @@
 # The Compliance Bouncer
 
-Students act as a data center compliance officer. The facility provides a pre-recorded stream of jobs. Every record 
-students receive is an integrity-protected evidence object: the values the chip measured (chip ID, job ID, counter, 
-FLOPs, energy) are signed, while operator claims (record ID, signature, declared workload type) are not. The students 
-will receive a `verify_signature()` helper which returns true if a signature is valid and false if not. The students 
-must write a `verify_evidence()` helper function that checks:
-- Endorsement: the chip is in the registry
-- Integrity: the signature matches that chip’s public key
-- Freshness: the counter is higher than the chip’s last accepted report. This stands in for a nonce, since pre-recorded 
-data cannot answer a live challenge
+An inspection game about hardware-rooted trust. Students play a compliance officer at a data center. Each AI job
+arrives as a report sealed by the chip that ran it, and the student stamps it Allow or Block before the queue backs up.
 
-Records that pass are charged to the chip’s registered owner. Records that fail are blocked and never counted toward any 
-total. A valid signature proves where the numbers came from and that they were not changed; it does not prove that 
-unsigned claims are true or that the meter saw all the work.
+The lesson every level builds toward: **a valid signature proves where numbers came from and that they weren't
+changed. It doesn't prove that unsigned claims are true, or that the meter saw all the work.**
 
-The student is then tasked to write a `policy_checker()` function that receives a signed evidence record for each job, 
-verifies it, and then returns a verdict: either allow the job or block it. There are four game levels in total, each 
-increasing in complexity.
-Level 1 covers the basics. Most jobs are what they claim to be, and some are clearly over the limit. Not every record deserves your trust, though. Before you judge a job, make sure its evidence actually holds up.
-Level 2 brings more careful operators. A job that looks harmless on its own may not be harmless in context, so think about what each actor has done across the whole level, not just the record in front of you. Pay attention to what you’ve already seen.
-Level 3 is about declared workload types. Remember which parts of a record the chip vouches for and which the operator simply claims. The reference ranges in the config describe what genuine work of each type looks like, and the measured data can tell a different story than the label.
-Level 4 brings real-world mess. Measurements are noisy, and some honest jobs run close to the limits. A policy that is too rigid will either let violations slip through or punish legitimate work, so use tolerances you can justify. Expect tricks from earlier levels to come back.
+## Levels
 
-The student writes one policy_checker() and it runs on every level, so make sure later changes don’t break earlier levels.
+| Level | The question | Students learn | Attacks |
+| --- | --- | --- | --- |
+| 1 | Can I trust where this came from? | Endorsement, integrity | Edited after signing; unregistered chip |
+| 2 | Have I seen this before? Who is paying? | Freshness; charging the registered owner | Replayed reports; one run split into small jobs |
+| 3 | Is the claim true? | Unsigned claims; limits of measurement | Disguised workload type; work the FLOP meter missed |
+| 4 | How sure do I need to be? | Noise and tolerance | Borderline jobs, plus every earlier attack |
+| Final | Can I build one, and break one? | All of the above | Students build an honest record, forgeries, and one that slips through |
 
-Expect about 2 hours to clear all four levels.
+Each level is a timed shift. Time-outs wave waiting reports through unchecked, so speed and accuracy share one score.
+After each shift comes an untimed debrief and three questions.
 
-## Files
+## Repo layout
 
-| File | Who Edits It | Can Students View?   | What It Is |
-|---|---|---|---|
-| `levels.json` | instructors | No | Hand-written records per level. Forged and replayed records are marked with `"attack"` |
-| `game_config.json` | instructors | Yes | FLOP and energy limits, reference ranges per workload type |
-| `answer_keys.json` | instructors | No | Correct verdict for every record |
-| `game_data.json` | generated | Yes | Config + chip registry + signed records: **everything students load** |
-| `play.py` | instructors | No | Runs a level |
-| `student.py` | students | Yes | Student implementation of `verify_evidence()` and `policy_checker()` |
-| `instructor.py` | instructors | No | Instructor implementation of `verify_evidence()` and `policy_checker()` (solution provided) |
-| `rot/` | instructors | Yes | Simulated hardware root of trust (see `rot/README.md`) |
-| `codecarbon/` | any (optional) | Yes | Measure the energy use and CO2 emissions of PyTorch training runs (see `codecarbon/README.md`) |
-| `pytorch/` | any (optional) | Yes | Measure the FLOP counts and CPU time of runs on an ML model with PyTorch (see `pytorch/README.md`)  |
-| `combined_runs/` | any (optional) | Yes | Run one training job with CodeCarbon and PyTorch together (see `combined_runs/README.md`) |
+| Path | What it is |
+| --- | --- |
+| `content/` | Everything the player reads: onboarding, Rulebook, tools, feedback, shifts, final challenge. See `content/README.md` |
+| `levels.json` | Hand-written records per level. Attacks are marked with `"attack"` |
+| `game_config.json` | FLOP and energy caps, and the FLOPs-per-kJ band for each workload type |
+| `answer_keys.json` | Correct verdict, reason code and explanation for every record |
+| `game_data.json` | Generated: config, chip registry and signed records. The game loads this |
+| `instructor.py` | Reference policy. The GUI's game logic must give the same verdicts |
+| `rot/` | Simulated hardware root of trust: chips, keys, signing, registry. See `rot/README.md` |
+| `preview.py` | Prints the game as a player meets it, and checks every verdict against the answer keys |
+| `check_content.py` | Checks `content/` for gaps before handoff |
 
-
-## Rebuild game_data.json (instructors only)
-
-After any change to `levels.json` or `game_config.json`, from the repo root, run:
+## Setup
 
 ```bash
-python -m rot.sign_levels
+pip install -r rot/requirements.txt
 ```
 
-It signs every record with its lab's chip, builds the registry, checks that honest records pass and
-attack records fail, and warns about any record missing from `answer_keys.json`.
-
-## Play
+## Preview and check
 
 ```bash
-python play.py <level_number>        # level 1 to 4
+python preview.py 1          # a level as the player sees it (onboarding, 1-4, final, or all)
+python check_content.py      # missing hints, unknown placeholders, locked reasons and other gaps
 ```
+
+## Changing levels (instructors)
+
+1. Edit `levels.json`, and give every record an entry in `answer_keys.json` (block entries need a `reason` code).
+2. Add a hint for any new record in `content/shifts.json`.
+3. Rebuild and check:
+
+```bash
+python -m rot.sign_levels    # signs every record and rebuilds game_data.json
+python check_content.py
+python preview.py all        # fails if any verdict disagrees with answer_keys.json
+```
+
+Never commit `ROT_SEED` or ship the level chips' private keys: anyone with them can forge any chip's seal.
