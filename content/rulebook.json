@@ -1,0 +1,121 @@
+{
+  "glossary": [
+    {
+      "term": "Root of trust",
+      "level": 0,
+      "definition": "What everything else relies on: here, each chip's meter and secret key."
+    },
+    {
+      "term": "PUF",
+      "level": 0,
+      "definition": "Hardware quirks unique to each chip that make its key impossible to copy. Simulated here."
+    },
+    {
+      "term": "Public and private key",
+      "level": 0,
+      "definition": "The private key signs and never leaves the chip. The public key checks signatures."
+    },
+    {
+      "term": "Digital signature",
+      "level": 0,
+      "definition": "The seal. Proves who made a report and that it hasn't changed. Not when, or whether it's complete."
+    },
+    {
+      "term": "Registry and endorsement",
+      "level": 0,
+      "definition": "The manufacturer's list of genuine chips, their keys and owners. Listed means endorsed."
+    },
+    {
+      "term": "FLOP",
+      "level": 0,
+      "definition": "One unit of computation. AI jobs run trillions (10¹²)."
+    },
+    {
+      "term": "kJ",
+      "level": 0,
+      "definition": "Kilojoule: the energy the meter records."
+    },
+    {
+      "term": "False block and missed violation",
+      "level": 1,
+      "definition": "Blocking an honest lab (a complaint), or allowing a violation (it slips through)."
+    },
+    {
+      "term": "Counter",
+      "level": 2,
+      "definition": "Goes up by one with every report a chip makes."
+    },
+    {
+      "term": "Nonce",
+      "level": 2,
+      "definition": "A fresh challenge a chip must sign. Pre-signed reports can't use one, so this game uses a counter."
+    },
+    {
+      "term": "Replay",
+      "level": 2,
+      "definition": "Resending an old, genuine report."
+    },
+    {
+      "term": "FLOPs per kJ",
+      "level": 3,
+      "definition": "Work done per unit of energy. Training and inference fall in different ranges."
+    }
+  ],
+  "rules": [
+    {
+      "id": "evidence_first",
+      "level": 1,
+      "text": "Check trust before numbers. Untrusted reports are blocked and never counted."
+    },
+    {
+      "id": "charge_owner",
+      "level": 1,
+      "text": "Charge the chip's registered owner, not the job or record ID."
+    },
+    {
+      "id": "flop_cap",
+      "level": 1,
+      "text": "Limit: {flop_limit} training FLOPs per lab per period."
+    },
+    {
+      "id": "inference_exempt",
+      "level": 1,
+      "text": "Inference doesn't count toward the FLOP cap: limits target training, where models gain their capabilities. Energy always counts."
+    },
+    {
+      "id": "blocked_still_count",
+      "level": 1,
+      "text": "Blocked jobs still count toward totals: the work already ran."
+    },
+    {
+      "id": "period_reset",
+      "level": 2,
+      "text": "Each level is a new period: totals reset, counters don't."
+    },
+    {
+      "id": "freshness",
+      "level": 2,
+      "text": "Accept a report only if its counter beats the last one you accepted from that chip."
+    },
+    {
+      "id": "energy_cap",
+      "level": 2,
+      "text": "Limit: {energy_limit} kJ per lab per period."
+    },
+    {
+      "id": "check_the_label",
+      "level": 3,
+      "text": "The workload type is written by the lab, so check it against the measurements."
+    },
+    {
+      "id": "profile",
+      "level": 3,
+      "text": "Each type has a FLOPs-per-kJ band, with 10% tolerance. Outside it, the claim doesn't fit."
+    },
+    {
+      "id": "noise_margin",
+      "level": 4,
+      "text": "Energy readings are ±5% noisy. Above {energy_margin_limit} kJ counts as over."
+    }
+  ]
+}

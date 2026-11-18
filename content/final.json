@@ -1,0 +1,125 @@
+{
+  "timed": false,
+  "intro": "Switch sides. You run lab_30, and chip-30 seals whatever you plan.",
+  "workbench": {
+    "chip": "chip-30",
+    "owner": "lab_30",
+    "rogue_chip": "chip-66",
+    "security_note": "Only these two chips' keys may exist in the client. Never ship the level chips' keys or ROT_SEED."
+  },
+  "part_a": {
+    "title": "Certify",
+    "points": 6,
+    "prompt": "Plan a training job of at least {min_flops} FLOPs that passes. In three sentences, say why each check passes.",
+    "starting_state": {
+      "used_flops": [
+        1500000000000.0,
+        1800000000000.0
+      ],
+      "used_energy_kj": [
+        3.2,
+        3.5
+      ],
+      "last_counter": [
+        4,
+        9
+      ],
+      "min_flops": 400000000000.0,
+      "_notes": "Each student gets values drawn from these ranges. check_content.py confirms the worst case is still solvable."
+    },
+    "worked_example": "lab_30 has used 1.72 × 10¹² FLOPs and 3.40 kJ, and chip-30's last counter is 6. At 0.5 × 10¹² FLOPs, energy must sit between 0.745 kJ (the training band's upper edge plus 10%) and 0.97 kJ (the noise-adjusted energy cap).",
+    "rubric": [
+      {
+        "points": 2,
+        "criterion": "The record is allowed"
+      },
+      {
+        "points": 2,
+        "criterion": "The FLOP and energy cap arithmetic is shown"
+      },
+      {
+        "points": 1,
+        "criterion": "The profile band is explained"
+      },
+      {
+        "points": 1,
+        "criterion": "The trust checks are explained"
+      }
+    ]
+  },
+  "part_b": {
+    "title": "Forge",
+    "points": 8,
+    "prompt": "Build four forgeries, each aimed at a different check. Predict what catches each one.",
+    "forgeries": [
+      {
+        "id": "edit",
+        "build": "Change a value inside a sealed envelope",
+        "expected": [
+          "integrity"
+        ]
+      },
+      {
+        "id": "rogue",
+        "build": "Seal a report with the unregistered chip",
+        "expected": [
+          "endorsement"
+        ]
+      },
+      {
+        "id": "replay",
+        "build": "Resubmit one of your earlier sealed records",
+        "expected": [
+          "freshness"
+        ]
+      },
+      {
+        "id": "split",
+        "build": "Two jobs that each pass alone but together cross a cap",
+        "expected": [
+          "flop_cap",
+          "energy_cap",
+          "noise_margin"
+        ]
+      },
+      {
+        "id": "disguise",
+        "optional": true,
+        "build": "Change the sticky-note workload type",
+        "expected": [
+          "profile_mismatch"
+        ],
+        "note": "Passes if the ratio sits in the overlap of the two bands."
+      }
+    ],
+    "scoring": "1 point for each correct prediction and 1 for each sound explanation, best four forgeries."
+  },
+  "part_c": {
+    "title": "The one that gets through",
+    "points": 10,
+    "prompt": "Build a dishonest record that passes. Why did nothing catch it? Suggest one defence.",
+    "known_exploits": [
+      "A training run labelled inference, with a ratio inside the overlap of the two bands (376–610 × 10⁹ FLOPs per kJ). It escapes the FLOP cap.",
+      "Work the FLOP meter misses, kept small enough that the energy stays inside the band.",
+      "A job run on another lab's chip. The bouncer charges the chip's owner, not whoever actually ran the job."
+    ],
+    "rubric": [
+      {
+        "points": 2,
+        "criterion": "The record passes the bouncer"
+      },
+      {
+        "points": 2,
+        "criterion": "The dishonesty is named precisely"
+      },
+      {
+        "points": 3,
+        "criterion": "The explanation names which check's blind spot it uses"
+      },
+      {
+        "points": 3,
+        "criterion": "A defence is proposed, with its cost"
+      }
+    ]
+  }
+}

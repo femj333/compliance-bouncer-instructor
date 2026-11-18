@@ -1,0 +1,463 @@
+{
+  "_notes": "The guided record is shown first with the clock paused; other records follow in game_data order. Words in curly braces are placeholders the game fills from the data.",
+  "shifts": {
+    "1": {
+      "title": "Can I trust where this came from?",
+      "briefing": "Check every seal before the numbers: an untrusted report is blocked, whatever it says. Limit: {flop_limit} training FLOPs per lab. You have {shift_time}.",
+      "shift_seconds": 240,
+      "max_slipped": 1,
+      "max_complaints": 1,
+      "tools_unlocked": [
+        "record_card",
+        "registry",
+        "signature",
+        "owner_tally",
+        "stamp",
+        "hint"
+      ],
+      "reasons_unlocked": [
+        "endorsement",
+        "integrity",
+        "flop_cap"
+      ],
+      "guided_record": "L1-001",
+      "guided_steps": [
+        {
+          "tool": "record_card"
+        },
+        {
+          "tool": "registry"
+        },
+        {
+          "tool": "signature"
+        },
+        {
+          "tool": "owner_tally"
+        },
+        {
+          "tool": "stamp"
+        }
+      ],
+      "records": {
+        "L1-001": {
+          "hint": "Follow the callouts."
+        },
+        "L1-002": {
+          "hint": "Registry, seal, then tally."
+        },
+        "L1-007": {
+          "hint": "The numbers look fine. Check the seal."
+        },
+        "L1-003": {
+          "hint": "What does this add to the tally?"
+        },
+        "L1-004": {
+          "hint": "Run every tool. Any objections?"
+        },
+        "L1-008": {
+          "hint": "Start with the registry."
+        },
+        "L1-005": {
+          "hint": "Check the owner's total, not the job."
+        },
+        "L1-006": {
+          "hint": "Close to a line. Read the tally."
+        }
+      },
+      "questions": [
+        {
+          "id": "L1-Q1",
+          "type": "mc",
+          "points": 1,
+          "refs": [
+            "L1-007"
+          ],
+          "prompt": "L1-007 was under every limit. What gave it away?",
+          "options": {
+            "a": "FLOPs over the cap",
+            "b": "Seal didn't match chip-05's key",
+            "c": "chip-05 not registered",
+            "d": "Wrong declared type"
+          },
+          "answer": "b",
+          "explanation": "It was edited after signing. Forgeries can have normal numbers."
+        },
+        {
+          "id": "L1-Q2",
+          "type": "short",
+          "points": 3,
+          "refs": [
+            "L1-008"
+          ],
+          "prompt": "L1-008's signature is valid for chip-99's own key. Why isn't that enough?",
+          "model_answer": "Anyone can make a key pair and sign anything. The registry is the manufacturer vouching that a key lives inside a real metering chip. Without that, the \"meter\" could be a script.",
+          "key_points": [
+            "A valid signature only shows that the holder of that key signed it",
+            "Anyone can create a key pair",
+            "The registry (endorsement) is what ties a key to a genuine chip"
+          ]
+        },
+        {
+          "id": "L1-Q3",
+          "type": "mc",
+          "points": 1,
+          "refs": [],
+          "prompt": "Which field can a lab change without breaking the seal?",
+          "options": {
+            "a": "flops",
+            "b": "counter",
+            "c": "declared_type",
+            "d": "chip_id"
+          },
+          "answer": "c",
+          "explanation": "declared_type is a sticky note. Remember this for Level 3."
+        }
+      ]
+    },
+    "2": {
+      "title": "Have I seen this before, and who is really paying?",
+      "briefing": "New period, totals reset. Labs now resend old reports and split big jobs. Watch counters and charge the registered owner. Energy limit: {energy_limit} kJ. You have {shift_time}.",
+      "shift_seconds": 240,
+      "max_slipped": 1,
+      "max_complaints": 1,
+      "tools_unlocked": [
+        "record_card",
+        "registry",
+        "signature",
+        "owner_tally",
+        "counter_ledger",
+        "stamp",
+        "hint"
+      ],
+      "reasons_unlocked": [
+        "endorsement",
+        "integrity",
+        "flop_cap",
+        "freshness",
+        "energy_cap"
+      ],
+      "account_choice_records": 2,
+      "guided_record": "L2-001",
+      "guided_steps": [
+        {
+          "tool": "counter_ledger"
+        },
+        {
+          "tool": "owner_tally",
+          "text": "Who pays? The registered owner, {owner}. The lab picks job and record IDs."
+        },
+        {
+          "tool": "owner_tally",
+          "text": "Energy counts now: {total_energy} of {energy_limit} kJ."
+        },
+        {
+          "tool": "stamp"
+        }
+      ],
+      "records": {
+        "L2-001": {
+          "hint": "Follow the callouts."
+        },
+        "L2-002": {
+          "hint": "Counter, then both tally bars."
+        },
+        "L2-008": {
+          "hint": "Has this chip reported before?"
+        },
+        "L2-003": {
+          "hint": "What's already on this owner's account?"
+        },
+        "L2-004": {
+          "hint": "Run every tool."
+        },
+        "L2-005": {
+          "hint": "Small alone. What else did this owner run?"
+        },
+        "L2-007": {
+          "hint": "Seen these numbers before? Check the counter."
+        },
+        "L2-006": {
+          "hint": "Check the energy bar."
+        }
+      },
+      "questions": [
+        {
+          "id": "L2-Q1",
+          "type": "mc",
+          "points": 1,
+          "refs": [
+            "L2-007",
+            "L2-008"
+          ],
+          "prompt": "L2-007 and L2-008 are identical, with valid seals. What shows L2-007 is a replay?",
+          "options": {
+            "a": "Different record ID",
+            "b": "Counter 1 isn't above chip-12's last accepted, 1",
+            "c": "Broken seal",
+            "d": "chip-12 not registered"
+          },
+          "answer": "b",
+          "explanation": "Record IDs are sticky notes. The sealed counter shows it isn't new."
+        },
+        {
+          "id": "L2-Q2",
+          "type": "short",
+          "points": 3,
+          "refs": [],
+          "prompt": "Why doesn't a valid signature stop a replay?",
+          "model_answer": "The seal proves who made the report and that it hasn't changed, not when it was made. An old genuine report is still genuine.",
+          "key_points": [
+            "The signature proves origin and integrity",
+            "It says nothing about when the report was made",
+            "An old genuine report still verifies, so freshness needs its own check (the counter)"
+          ]
+        },
+        {
+          "id": "L2-Q3",
+          "type": "short",
+          "points": 3,
+          "refs": [
+            "L2-005"
+          ],
+          "prompt": "Why charge the registered owner, not the job ID?",
+          "model_answer": "The lab chooses job IDs and can split one run across many; job_016 even appears under two labs. The owner comes from the registry, tied to a key the lab cannot change.",
+          "key_points": [
+            "Job IDs are chosen by the lab",
+            "Splitting one run across job IDs would dodge the cap",
+            "The registered owner is bound to the chip's key by the registry"
+          ]
+        }
+      ]
+    },
+    "3": {
+      "title": "Is the claim true?",
+      "briefing": "Labs label training runs as inference to dodge the FLOP cap. The label is theirs; the measurements aren't. You have {shift_time}.",
+      "shift_seconds": 210,
+      "max_slipped": 1,
+      "max_complaints": 1,
+      "tools_unlocked": [
+        "record_card",
+        "registry",
+        "signature",
+        "owner_tally",
+        "counter_ledger",
+        "profile_gauge",
+        "case_file",
+        "stamp",
+        "hint"
+      ],
+      "reasons_unlocked": [
+        "endorsement",
+        "integrity",
+        "flop_cap",
+        "freshness",
+        "energy_cap",
+        "profile_mismatch"
+      ],
+      "guided_record": "L3-001",
+      "guided_steps": [
+        {
+          "tool": "profile_gauge"
+        },
+        {
+          "tool": "case_file"
+        },
+        {
+          "tool": "stamp"
+        }
+      ],
+      "records": {
+        "L3-001": {
+          "hint": "Follow the callouts."
+        },
+        "L3-002": {
+          "hint": "Gauge versus sticky note."
+        },
+        "L3-003": {
+          "hint": "Which bands cover the needle?"
+        },
+        "L3-004": {
+          "hint": "Gauge, then the case file."
+        },
+        "L3-005": {
+          "hint": "Trust checks, then the gauge."
+        },
+        "L3-006": {
+          "hint": "Gauge and case file."
+        }
+      },
+      "questions": [
+        {
+          "id": "L3-Q1",
+          "type": "short",
+          "points": 3,
+          "refs": [
+            "L3-002"
+          ],
+          "prompt": "L3-002 passed every trust check. Why didn't its seal stop the false label?",
+          "model_answer": "declared_type sits outside the envelope. The chip never measured or signed it, and the sealed measurements contradict it.",
+          "key_points": [
+            "declared_type is unsigned (a sticky note)",
+            "The seal only covers the measured fields",
+            "The FLOPs-per-kJ ratio contradicts the claim"
+          ]
+        },
+        {
+          "id": "L3-Q2",
+          "type": "short",
+          "points": 3,
+          "refs": [
+            "L3-004",
+            "L2-004"
+          ],
+          "prompt": "L3-004 seals the same FLOPs as lab_01's Level 2 report, but used 16× the energy. Both seals are valid. What happened, and what does it say about signatures?",
+          "model_answer": "The FLOP meter missed work that the energy meter saw. A seal proves the chip reported this number unchanged, not that the number is complete.",
+          "key_points": [
+            "The FLOP meter undercounted work it can't see",
+            "The energy reading revealed the hidden work",
+            "A signature shows a number is authentic, not that it is complete or true"
+          ]
+        },
+        {
+          "id": "L3-Q3",
+          "type": "mc",
+          "points": 1,
+          "refs": [
+            "L3-003"
+          ],
+          "prompt": "L3-003's ratio (463 × 10⁹) fits both bands. What can you conclude?",
+          "options": {
+            "a": "It's inference",
+            "b": "The claim fits but isn't proven",
+            "c": "It's training",
+            "d": "Its seal is broken"
+          },
+          "answer": "b",
+          "explanation": "The bands overlap from 376 to 610 × 10⁹, where the gauge can't tell them apart."
+        }
+      ]
+    },
+    "4": {
+      "title": "How sure do I need to be?",
+      "briefing": "Final shift. Meters are noisy, and every old trick is back. You have {shift_time}.",
+      "shift_seconds": 330,
+      "max_slipped": 2,
+      "max_complaints": 1,
+      "tools_unlocked": [
+        "record_card",
+        "registry",
+        "signature",
+        "owner_tally",
+        "counter_ledger",
+        "profile_gauge",
+        "case_file",
+        "noise_overlay",
+        "stamp",
+        "hint"
+      ],
+      "reasons_unlocked": [
+        "endorsement",
+        "integrity",
+        "flop_cap",
+        "freshness",
+        "energy_cap",
+        "profile_mismatch",
+        "noise_margin"
+      ],
+      "guided_record": "L4-003",
+      "guided_steps": [
+        {
+          "tool": "noise_overlay"
+        },
+        {
+          "tool": "stamp"
+        }
+      ],
+      "records": {
+        "L4-003": {
+          "hint": "Follow the callouts."
+        },
+        "L4-001": {
+          "hint": "Overlay on. Check the energy bar."
+        },
+        "L4-002": {
+          "hint": "Where does energy sit against the shading?"
+        },
+        "L4-009": {
+          "hint": "Trust checks, then the tally."
+        },
+        "L4-007": {
+          "hint": "Seal first."
+        },
+        "L4-004": {
+          "hint": "Which of this owner's reports were trusted?"
+        },
+        "L4-005": {
+          "hint": "This owner has been here before."
+        },
+        "L4-008": {
+          "hint": "Check the counter."
+        },
+        "L4-006": {
+          "hint": "Compare energy with the cap itself."
+        },
+        "L4-010": {
+          "hint": "Gauge, with tolerance showing."
+        },
+        "L4-011": {
+          "hint": "Start with the registry."
+        },
+        "L4-012": {
+          "hint": "Gauge versus sticky note."
+        }
+      },
+      "questions": [
+        {
+          "id": "L4-Q1",
+          "type": "mc",
+          "points": 1,
+          "refs": [
+            "L4-001"
+          ],
+          "prompt": "L4-001 read 4.49 kJ, under the 4.6 kJ cap. Why block it?",
+          "options": {
+            "a": "Rounding error",
+            "b": "Readings can be 5% low, so it may be over",
+            "c": "lab_23 is over the FLOP cap",
+            "d": "Broken seal"
+          },
+          "answer": "b",
+          "explanation": "Above 4.37 kJ, noise means it could really be over 4.6."
+        },
+        {
+          "id": "L4-Q2",
+          "type": "short",
+          "points": 3,
+          "refs": [
+            "L4-010"
+          ],
+          "prompt": "The energy margin and the profile tolerance lean opposite ways. Why?",
+          "model_answer": "The energy margin accepts some false blocks so a hard cap is never missed. The profile tolerance accepts some borderline jobs so honest runs, whose ratio naturally varies, aren't blocked (L4-010).",
+          "key_points": [
+            "The energy margin is fail-closed: it blocks some honest jobs to avoid missing violations",
+            "The profile tolerance is fail-open: it allows borderline jobs to avoid blocking honest ones",
+            "Each trades false blocks against missed violations"
+          ]
+        },
+        {
+          "id": "L4-Q3",
+          "type": "short",
+          "points": 3,
+          "refs": [],
+          "prompt": "Under time pressure, which check would you automate first, and which would you keep a person on? Why?",
+          "model_answer": "Automate the registry, seal and counter checks: they are mechanical and exact. Keep a person on the workload-profile and borderline-noise calls, which need judgment.",
+          "key_points": [
+            "The trust checks (registry, seal, counter) are mechanical, so automate them",
+            "The profile and noise calls involve judgment and uncertainty",
+            "The answer ties the choice to the speed-versus-care trade-off"
+          ]
+        }
+      ]
+    }
+  }
+}

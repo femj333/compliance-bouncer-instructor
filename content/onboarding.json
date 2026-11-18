@@ -1,0 +1,90 @@
+{
+  "screens": [
+    {
+      "id": "job",
+      "title": "Your job",
+      "body": "You're the compliance officer at a data center. Each lab may use {flop_limit} training FLOPs and {energy_limit} kJ per period, and some will cheat. Every chip seals a report of each job. Stamp each report Allow or Block."
+    },
+    {
+      "id": "anatomy",
+      "title": "Anatomy of a record",
+      "body": "Every report has two parts.",
+      "zones": [
+        {
+          "id": "sealed",
+          "label": "Sealed by the chip",
+          "fields": [
+            "chip_id",
+            "job_id",
+            "counter",
+            "flops",
+            "energy_kj"
+          ]
+        },
+        {
+          "id": "seal",
+          "label": "The seal",
+          "fields": [
+            "signature"
+          ],
+          "note": "Made by a key that never leaves the chip."
+        },
+        {
+          "id": "sticky",
+          "label": "Sticky notes from the lab (not sealed)",
+          "fields": [
+            "record_id",
+            "declared_type"
+          ]
+        }
+      ],
+      "closing": "Sticky notes can be swapped freely. Change anything sealed and the seal breaks.",
+      "check": {
+        "prompt": "Sealed or not? Tap each field.",
+        "graded": false,
+        "answers": {
+          "chip_id": "sealed",
+          "job_id": "sealed",
+          "counter": "sealed",
+          "flops": "sealed",
+          "energy_kj": "sealed",
+          "signature": "the seal itself",
+          "record_id": "not sealed",
+          "declared_type": "not sealed"
+        }
+      }
+    },
+    {
+      "id": "three_checks",
+      "title": "Three checks before you trust a report",
+      "items": [
+        {
+          "check": "endorsement",
+          "question": "Is the chip in the registry?",
+          "why": "If not, no one vouches for it."
+        },
+        {
+          "check": "integrity",
+          "question": "Does the seal match its registered key?",
+          "why": "If not, something was edited."
+        },
+        {
+          "check": "freshness",
+          "question": "Is the counter higher than last time?",
+          "why": "If not, it's an old report.",
+          "unlock_level": 2
+        }
+      ],
+      "closing": "Pass all three, then charge the owner and check the limits."
+    },
+    {
+      "id": "shift",
+      "title": "Your shift",
+      "body": "Each level is a timed shift. When time runs out, waiting reports pass unchecked. Keep two counters low: Slipped (violations allowed) and Complaints (honest labs blocked)."
+    }
+  ],
+  "practice": {
+    "note": "The guided first record of Level 1 is the practice record: untimed, ungraded, and replayable from the Rulebook.",
+    "level": "1"
+  }
+}
