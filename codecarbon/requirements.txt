@@ -1,4 +1,0 @@
-codecarbon>=3.3
-torch
-pandas
-tabulate

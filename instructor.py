@@ -1,10 +1,8 @@
 """
 instructor.py
 
-The answer key for verify_evidence() and policy_checker() (more than one solution may be correct)
-
-Change the verify_evidence() and policy_checker() functions and lines 26 and 51 in `student.py` to test alternate
-solutions
+The reference policy: the correct verdict for every record. Use it to check levels.json and answer_keys.json after any
+change. The GUI's game logic must give the same verdicts.
 """
 
 from rot.verify import verify_signature
@@ -58,8 +56,10 @@ def policy_checker(record, context) -> str:
     # charge the job to the chip's registered owner
     totals = state.setdefault("totals", {}).setdefault(
         owner, {"flops": 0, "energy_kj": 0.0})
-    # inference FLOPs are exempt from the FLOP cap; energy always counts. declared_type is an unsigned claim, so a lab
-    # can lie about it to escape the cap. The profile check below is what catches that.
+    # Inference doesn't count toward the FLOP cap, because limits target training, where models gain their
+    # capabilities. Energy always counts. The workload type is written by the lab (declared_type is unsigned), so a lab
+    # can label a training run "inference" to escape the cap: the profile check below compares that claim against the
+    # signed measurements.
     counts_flops = record["declared_type"] != "inference"
     if counts_flops:
         totals["flops"] += measured["flops"]

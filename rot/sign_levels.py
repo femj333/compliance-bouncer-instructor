@@ -9,7 +9,7 @@ python -m rot.sign_levels        (run from the repo root)
 INSTRUCTOR ONLY.
 
 Inputs:  levels.json, game_config.json, answer_keys.json (checked, not changed)
-Output:  game_data.json -> everything play.py and students need
+Output:  game_data.json -> everything the game loads
 
 Each lab gets one chip: lab_04 -> chip-04, owned by lab_04 in the registry.
 The signed record drops "actor": the owner comes from the registry instead.
