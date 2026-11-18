@@ -58,11 +58,15 @@ def policy_checker(record, context) -> str:
     # charge the job to the chip's registered owner
     totals = state.setdefault("totals", {}).setdefault(
         owner, {"flops": 0, "energy_kj": 0.0})
-    totals["flops"] += measured["flops"]
+    # inference FLOPs are exempt from the FLOP cap; energy always counts. declared_type is an unsigned claim, so a lab
+    # can lie about it to escape the cap. The profile check below is what catches that.
+    counts_flops = record["declared_type"] != "inference"
+    if counts_flops:
+        totals["flops"] += measured["flops"]
     totals["energy_kj"] += measured["energy_kj"]
 
     # cumulative limits per owner, energy gets noise margin
-    if totals["flops"] > config["flop_limit"]:
+    if counts_flops and totals["flops"] > config["flop_limit"]:
         return "block"
     if totals["energy_kj"] > config["energy_limit_kj"] * (1 - ENERGY_MARGIN):
         return "block"
