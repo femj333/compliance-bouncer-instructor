@@ -18,6 +18,8 @@ import threading
 from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory, session
+
+from check_content import rid
 from verify import verify_signature
 
 BASE = Path(__file__).resolve().parent
@@ -26,7 +28,7 @@ KEYS = json.loads((BASE / "answer_keys.json").read_text())
 
 CONFIG, REGISTRY, LEVELS = GAME["config"], GAME["registry"], GAME["levels"]
 FLOP_LIMIT = CONFIG["flop_limit"]
-ENERGY_LIMIT = CONFIG["energy_limit"]
+ENERGY_LIMIT = CONFIG["energy_limit_kj"]
 RANGES = CONFIG["reference_ranges"]
 
 ENERGY_MARGIN = 0.05
@@ -191,3 +193,149 @@ def progress_summary(p):
     return [{"level": level, "total": len(LEVELS[level]), "solved": len(p["levels"][level]["solved"]),
              "unlocked": unlocked(p, level), "complete": level_complete(p, level)} for level in LEVEL_IDS]
 
+# web app
+app = Flask(__name__, static_folder="static", static_url_path="/static")
+app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(16)
+
+@app.after_request
+def no_cache(response):
+    if request.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"
+    return response
+
+def fail(message, status=400):
+    response = jsonify(error=message)
+    response.status_code = status
+    return response
+
+def gate(level):
+    p = current_progress()
+
+    if level not in LEVELS:
+        return None, fail("Level does not exist", 404)
+    if not unlocked(p, level):
+        return None, fail("Finish the previous level first", 403)
+    return p, None
+
+@app.get("/")
+def index():
+    return send_from_directory(BASE /"static", "index.html")
+
+@app.get("/api/config")
+def api_config():
+    return jsonify(flop_limit=FLOP_LIMIT, energy_limit_kj=ENERGY_LIMIT, reference_ranges=RANGES,
+                   reasons=REASONS, rules=RULES, briefings=LEVEL_BRIEFINGS,
+                   require_explanation=REQUIRE_EXPLANATION, levels=LEVEL_IDS)
+
+@app.get("/api/me")
+def api_me():
+    return jsonify(progress=progress_summary(current_progress()))
+
+@app.post("/api/reset")
+def api_reset():
+    with LOCK:
+        SESSIONS[session.setdefault("sid"), secrets.token_hex(16)] = new_progress()
+    return jsonify(ok=True)
+
+@app.get("/api/results")
+def api_results():
+    p = current_progress()
+
+    if not all_complete(p):
+        return fail("Finish all levels to see your results", 403)
+
+    levels = []
+    for level in LEVEL_IDS:
+        L, rows = p["levels"][level], []
+        for record in LEVELS[level]:
+            rid = record["record_id"]
+            s = L["solved"][rid]
+            rows.append({"record_id": rid, "verdict": s["verdict"], "reason": s["reason"], "notes": s["notes"],
+                         "attempts": sum(1 for x in L["attempts"] if x["record_id"] == rid)})
+            levels.append({"level": level, "records": rows,
+                           "first_try": sum(1 for r in rows if r["attempts"] == 1),
+                           "attempts": sum(r["attempts"] for r in rows)})
+
+    return jsonify(levels=levels, totals=sum(len(x["records"]) for x in levels),
+                           first_try=sum(x["first_try"] for x in levels), attempts=sum(x["attempts"] for x in levels))
+
+@app.get("/api/level/<lv>")
+def api_level(lv):
+    p, err = gate(lv)
+    if err:
+        return err
+    solved = p["levels"][lv]["solved"]
+    records = []
+    for rec in LEVELS[lv]:
+        item = {"record_id": rec["record_id"], "measured": rec["measured"],
+                "declared_type": rec["declared_type"], "signature": rec["signature"]}
+        if rec["record_id"] in solved:
+            item["saved"] = solved[rec["record_id"]]
+        records.append(item)
+    return jsonify(level=lv, records=records, progress=progress_summary(p))
+
+
+@app.get("/api/level/<lv>/record/<rid>/<tool>")
+def api_tool(lv, rid, tool):
+    p, err = gate(lv)
+    if err:
+        return err
+    a = ANALYSIS[lv].get(rid)
+    if a is None or tool not in ("evidence", "totals", "profile"):
+        return fail("Unknown record or tool.", 404)
+    m = RECORDS[lv][rid]["measured"]
+
+    if tool == "evidence":
+        return jsonify(chip_id=m["chip_id"], counter=m["counter"], endorsed=a["endorsed"], owner=a["owner"],
+                       signature_valid=a["signature_valid"], fresh=a["fresh"],
+                       last_counter=a["last_counter"], passed=a["evidence_ok"])
+    if tool == "totals":
+        if not a["evidence_ok"]:
+            return jsonify(charged=False)
+        return jsonify(charged=True, owner=a["owner"], flop_limit=FLOP_LIMIT, energy_limit_kj=ENERGY_LIMIT,
+                       jobs=a["totals"]["jobs"], flops=a["totals"]["flops"],
+                       energy_kj=round(a["totals"]["energy_kj"], 4))
+    return jsonify(a["profile"])
+
+
+@app.post("/api/level/<lv>/answer")
+def api_answer(lv):
+    body = request.get_json(silent=True) or {}
+    rid, verdict, reason = body.get("record_id"), body.get("verdict"), body.get("reason")
+    notes = str(body.get("notes", "")).strip()[:2000]
+
+    with LOCK:
+        p, err = gate(lv)
+        if err:
+            return err
+        a = ANALYSIS[lv].get(rid)
+        if a is None:
+            return fail("Unknown record.", 404)
+        if verdict not in ("allow", "block") or reason not in REASON_CODES:
+            return fail("Choose a decision and a reason.")
+        if REQUIRE_EXPLANATION and len(notes) < 10:
+            return fail("Please add a short explanation of your reasoning.")
+
+        L = p["levels"][lv]
+        if rid not in L["solved"]:
+            verdict_ok = verdict == a["expected"]
+            reason_ok = (reason == "legitimate") if a["expected"] == "allow" else (reason in a["valid_reasons"])
+            correct = verdict_ok and reason_ok
+            L["attempts"].append({"record_id": rid, "verdict": verdict, "reason": reason, "correct": correct})
+            if correct:
+                L["solved"][rid] = {"verdict": verdict, "reason": reason, "notes": notes}
+            if correct:
+                message = "Correct."
+            elif not verdict_ok:
+                message = "Not quite. That decision is wrong. Try the verification tools."
+            else:
+                message = "Right decision, but that reason doesn't apply to this record."
+        else:
+            correct, verdict_ok, reason_ok, message = True, True, True, "Already solved."
+
+        return jsonify(correct=correct, verdict_correct=verdict_ok, reason_correct=reason_ok,
+                       message=message, level_complete=level_complete(p, lv),
+                       progress=progress_summary(p))
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("HOST", "127.0.0.1"), port=int(os.environ.get("PORT", "5000")))
