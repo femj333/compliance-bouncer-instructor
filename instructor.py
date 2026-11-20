@@ -5,7 +5,7 @@ The reference policy: the correct verdict for every record. Use it to check leve
 change. The GUI's game logic must give the same verdicts.
 """
 
-from rot.verify import verify_signature
+from verify import verify_signature
 
 # Energy readings are noisy (~ +/-5%), so a job can read just under the energy limit while being over it. Treat anything
 # within one noise-width of the limit as over. The cost is some honest jobs just under the limit get blocked.

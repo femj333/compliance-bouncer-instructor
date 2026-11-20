@@ -9,7 +9,7 @@ INSTRUCTOR ONLY -- this is the solution. Do not give to students.
     ok, reason = verify_evidence(record, registry, last_counter)
 """
 
-from rot.verify import verify_signature
+from verify import verify_signature
 
 
 def verify_evidence(record, registry, last_counter):

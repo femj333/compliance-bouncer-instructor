@@ -18,7 +18,7 @@ import re
 import sys
 from pathlib import Path
 
-from rot.verify import verify_signature
+from verify import verify_signature
 
 ROOT = Path(__file__).resolve().parent
 ENERGY_MARGIN, RATIO_MARGIN = 0.05, 0.10
