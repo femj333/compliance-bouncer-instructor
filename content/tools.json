@@ -1,0 +1,87 @@
+{
+  "tools": [
+    {
+      "id": "record_card",
+      "name": "Record card",
+      "unlock_level": 1,
+      "shows": "Sealed fields and the lab's sticky notes.",
+      "cannot_tell_you": "Anything on its own.",
+      "intro": "Inside: what {chip} sealed. Outside: the lab's notes."
+    },
+    {
+      "id": "registry",
+      "name": "Registry lookup",
+      "unlock_level": 1,
+      "shows": "Whether the chip is listed, and its owner.",
+      "cannot_tell_you": "Whether the report was edited.",
+      "intro": "{chip} is listed, owned by {owner}."
+    },
+    {
+      "id": "signature",
+      "name": "Signature check",
+      "unlock_level": 1,
+      "shows": "Whether the seal matches the registered key.",
+      "cannot_tell_you": "Whether it's new, whether the notes are true, or whether the meter saw everything.",
+      "intro": "Seal matches: nothing was edited after signing."
+    },
+    {
+      "id": "owner_tally",
+      "name": "Owner tally",
+      "unlock_level": 1,
+      "energy_unlock_level": 2,
+      "shows": "Each owner's running totals against the caps.",
+      "cannot_tell_you": "Whether to trust a report.",
+      "intro": "Trusted, so charge {owner}: now {total_flops} of {flop_limit} FLOPs."
+    },
+    {
+      "id": "counter_ledger",
+      "name": "Counter ledger",
+      "unlock_level": 2,
+      "shows": "This counter next to the last one accepted.",
+      "cannot_tell_you": "Whether the values are true.",
+      "intro": "Counter {counter}, last accepted {last_counter}. Higher means new."
+    },
+    {
+      "id": "profile_gauge",
+      "name": "Profile gauge",
+      "unlock_level": 3,
+      "shows": "FLOPs per kJ against each type's band.",
+      "cannot_tell_you": "Which type is true in the overlap, or whether work went uncounted.",
+      "intro": "{ratio} FLOPs/kJ: inside the {type} band. The claim fits."
+    },
+    {
+      "id": "case_file",
+      "name": "Case file",
+      "unlock_level": 3,
+      "optional": true,
+      "shows": "Earlier reports with the same owner and job.",
+      "cannot_tell_you": "Which report is honest.",
+      "intro": "Earlier reports for this job. Compare when numbers look off."
+    },
+    {
+      "id": "noise_overlay",
+      "name": "Noise band overlay",
+      "unlock_level": 4,
+      "shows": "Where noise makes a reading uncertain.",
+      "cannot_tell_you": "Which side of the line it really is.",
+      "intro": "Shaded means uncertain. {total_energy} kJ is well clear."
+    },
+    {
+      "id": "stamp",
+      "name": "Verdict stamp",
+      "unlock_level": 1,
+      "shows": "Allow, or Block with a reason.",
+      "cannot_tell_you": "n/a",
+      "intro": "All checks pass. Stamp Allow."
+    },
+    {
+      "id": "hint",
+      "name": "Supervisor hint",
+      "unlock_level": 1,
+      "cost_seconds": 10,
+      "shows": "Which tool to try next.",
+      "cannot_tell_you": "n/a",
+      "intro": ""
+    }
+  ]
+}

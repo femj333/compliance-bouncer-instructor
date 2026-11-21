@@ -1,13 +1,11 @@
 """
 instructor.py
 
-The answer key for verify_evidence() and policy_checker() (more than one solution may be correct)
-
-Change the verify_evidence() and policy_checker() functions and lines 26 and 51 in `student.py` to test alternate
-solutions
+The reference policy: the correct verdict for every record. Use it to check levels.json and answer_keys.json after any
+change. The GUI's game logic must give the same verdicts.
 """
 
-from rot.verify import verify_signature
+from verify import verify_signature
 
 # Energy readings are noisy (~ +/-5%), so a job can read just under the energy limit while being over it. Treat anything
 # within one noise-width of the limit as over. The cost is some honest jobs just under the limit get blocked.
@@ -58,11 +56,17 @@ def policy_checker(record, context) -> str:
     # charge the job to the chip's registered owner
     totals = state.setdefault("totals", {}).setdefault(
         owner, {"flops": 0, "energy_kj": 0.0})
-    totals["flops"] += measured["flops"]
+    # Inference doesn't count toward the FLOP cap, because limits target training, where models gain their
+    # capabilities. Energy always counts. The workload type is written by the lab (declared_type is unsigned), so a lab
+    # can label a training run "inference" to escape the cap: the profile check below compares that claim against the
+    # signed measurements.
+    counts_flops = record["declared_type"] != "inference"
+    if counts_flops:
+        totals["flops"] += measured["flops"]
     totals["energy_kj"] += measured["energy_kj"]
 
     # cumulative limits per owner, energy gets noise margin
-    if totals["flops"] > config["flop_limit"]:
+    if counts_flops and totals["flops"] > config["flop_limit"]:
         return "block"
     if totals["energy_kj"] > config["energy_limit_kj"] * (1 - ENERGY_MARGIN):
         return "block"

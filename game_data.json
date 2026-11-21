@@ -35,68 +35,76 @@
   },
   "registry": {
     "chip-01": {
-      "public_key": "QdF1mYhNZGWn6OwTJORl4oBtqx+oKWz8pCbml1Qv3vw=",
+      "public_key": "ywZ17p1StJyd6Bkac55sBc/4xUUmlBQ0PJY5lA0xq8Y=",
       "owner": "lab_01"
     },
     "chip-02": {
-      "public_key": "xdnCSOLS+5+BBRk8rJLlBGjGOjY4OjnEle6glngANTk=",
+      "public_key": "HwsIQyzs6JIR7LN2yyKNOp7152AdAWNVNuTMhqKMEgg=",
       "owner": "lab_02"
     },
     "chip-03": {
-      "public_key": "/hNObf6vpJgtNGl5A105U1p3PCfh8A1qXa741hcf6ek=",
+      "public_key": "h1iQxCFrq2MnXs9T+Cz9DRPaHsPCpFFb4N4hrMZCcRo=",
       "owner": "lab_03"
     },
     "chip-04": {
-      "public_key": "xJsyP0sRuCXOEg88A1N+myHDc80LlET8d8JSExQdCic=",
+      "public_key": "HyRYNbxSf+jCACNEZMen28g+gDshpg++4gjTyv4kZVw=",
       "owner": "lab_04"
     },
     "chip-05": {
-      "public_key": "IvBBeg2lkCsuzYxBFTPcQJe26CI0KIVWgTyodWEKQJs=",
+      "public_key": "Wz5ZcrICaPSnazoP2ytlK1hb8490PY/dNf5jjv8ONHk=",
       "owner": "lab_05"
     },
     "chip-06": {
-      "public_key": "U0k94qrs6YLdNxs2JprCwA9wDqx7U+zgxRR8oUNvvwU=",
+      "public_key": "Nu0IRSuiN/vHUvWalaCcLtVCAgwGatFxt1V/YhX/D2M=",
       "owner": "lab_06"
     },
     "chip-07": {
-      "public_key": "AODDRB5U6dkegFy014GnBFujU9LSKTm8126ZA5Co5/A=",
+      "public_key": "5rOyb3RZpTgB5O9OoHDFM2l4Td6eaKPpcYZs0nz+oT0=",
       "owner": "lab_07"
     },
     "chip-09": {
-      "public_key": "63DEb2xu9aKZ9SfAIq0cj9ruxSLwhpn7DJCtPtIy5/4=",
+      "public_key": "R+Gxf2m5m0bbYMaqSg8j8TDrHE9nod8FpW8gSNQRoBA=",
       "owner": "lab_09"
     },
     "chip-10": {
-      "public_key": "6Q6kaAtwHBWke2yr2Dl/FalHCRH6FMF6mGBm9uXWGL0=",
+      "public_key": "o7Xr0YqQ5Y5rVXgiaMXlFV30GMXpcAufRwMcibRahag=",
       "owner": "lab_10"
     },
     "chip-11": {
-      "public_key": "3TA4JPsp7Z1eo5om2r3MN5aObq+6OQVVJVayRYuvkm0=",
+      "public_key": "S0G2mQiZHBVS6vauYO8SL4uGuczLmQQD+5j7yeVp2l0=",
       "owner": "lab_11"
     },
     "chip-12": {
-      "public_key": "ccFVLgZWVRik+fX8bMnLfkOnESzjoGq0qwzw797A/zk=",
+      "public_key": "KUpjhe5wKEYHK+5Y1kURDli5JkfHeQr0rS83badV/yM=",
       "owner": "lab_12"
     },
     "chip-15": {
-      "public_key": "3QGknB5/S8PkRW2u4ji9ev16bHO6np4rzugwxqVlU54=",
+      "public_key": "+xX/onzxZGtW8oReFhj+uvhWsjjWXW0YhzO2y1ZQ6LE=",
       "owner": "lab_15"
     },
     "chip-18": {
-      "public_key": "9y5UdPg1gs+iPmwBvXkoaR9O1tPD8KNckvTLwkeGsuw=",
+      "public_key": "cRYLuOO5Cqy+ChD97rbQVojhXfWEeSbPwR695vN6Ego=",
       "owner": "lab_18"
     },
     "chip-20": {
-      "public_key": "mnIcnX89qnNCYlQ582ExjMg7PqFpQqbpGiD4Cj5t+bs=",
+      "public_key": "FRzTcJK5ED8NEu+M4qTl38uNKGX3GZHNzCnIcWpBkQU=",
       "owner": "lab_20"
     },
     "chip-21": {
-      "public_key": "fPLXQ74PxlUlwh5ZsH0DohdPM7n3s5BUbtA5aG3KC6s=",
+      "public_key": "jfRK6lq/CVF0hxOox2UDyTuUQedryTrkUmSPxgVLxRw=",
       "owner": "lab_21"
     },
     "chip-23": {
-      "public_key": "xW0dKfwkO657JhmGWmplWMPPBRw4VDuIDjEeiOaLG0s=",
+      "public_key": "+nPbPTI0X4ryINDA51hQS3DHbmKJxIiTJJnjTU5sTt4=",
       "owner": "lab_23"
+    },
+    "chip-25": {
+      "public_key": "JKN5qtdBAAmBr7pBb8wGZt/Z+gcUkXIfAGQGv8HTAU0=",
+      "owner": "lab_25"
+    },
+    "chip-26": {
+      "public_key": "FxoMyIttZMs9XOYCl3QpHoHOCjty8JsrzLWqx5jqX0Q=",
+      "owner": "lab_26"
     }
   },
   "levels": {
@@ -110,7 +118,7 @@
           "flops": 349897090620,
           "energy_kj": 0.6564
         },
-        "signature": "YYoMwM1r48obdrGO3A+VTt0Y63OMyB3O3FXv9PBAz+Kz+N5oKcOdCn/8ocllScdiTnzOOMBmO0Q8jN7Lh+hiCA==",
+        "signature": "MdK4IcUyIz5QKA0LUA7q/N8WZifpFQtr0RcOVglAtQwAiipymlsVCaeC6LBj2NYDyzIfjJlCFMchpa+K1iixBg==",
         "declared_type": "training"
       },
       {
@@ -122,7 +130,7 @@
           "flops": 368193649907,
           "energy_kj": 0.8764
         },
-        "signature": "+9k/mK9+aeZZPdZQ3JQc05/9Vhxk5ex/r9DK9s7S52h7WqPU15CW/scd0F/Y0hub7jq5oEg+IZ3UXiobktRECw==",
+        "signature": "5VWrdJ8jTO8swip6L9+hQ0CTySJ+Wr6ZIp06ReHh8DOkcAFl2CAQ09WOX/5Uha7r43gitpLrOrF6U8/vdxlOAQ==",
         "declared_type": "inference"
       },
       {
@@ -134,7 +142,7 @@
           "flops": 1203086419725,
           "energy_kj": 2.4062
         },
-        "signature": "xzkGspL8Cd1bOzYujZmuUkf241sNWfBF8BtXiplS2aNkaDWNERfR8PFXVbay4tofkIiCK6TJ8ReaqQAg7/NuAQ==",
+        "signature": "3/C+eZ13xGzagFMhyOLNdKtp0OLpGAGEFSC505V9g5ZlOu6bBpVJJVOn7OGMz2f6r4pNi8EK0/5I3IPEtbY5BA==",
         "declared_type": "training"
       },
       {
@@ -146,7 +154,7 @@
           "flops": 5438713243560,
           "energy_kj": 4.8234
         },
-        "signature": "Iz/OvYQnsGbNvfhJ4lWNRwN8xP/0T4v5ctUcXgWz7sAsJ1QIkFpuE72e/3A14M9g2Lx/bVR2RM6/Go5QCi2fCQ==",
+        "signature": "n4N72GrdXuem/MjY3F7vouqOSUKGTK3QUjwT5CKZm0DV06uv7UaS2ERSFa6Na2GIE+owQUigXpbvDnN90Ex9Aw==",
         "declared_type": "training"
       },
       {
@@ -156,9 +164,9 @@
           "job_id": "job_018",
           "counter": 1,
           "flops": 58556789011,
-          "energy_kj": 1.0765
+          "energy_kj": 0.1077
         },
-        "signature": "/ObQ2L78d31GwbOkWA0x45nw9QiMYaQPR/T9MDjDC+NHbDwb6OQsy+YGbxXMk+g3Zpz1YDA9oWqxyi6jaRJlAw==",
+        "signature": "dcaFCOTfR3kUrvBUoFId0VCFet4ohAaOGa53dbjfwTFIQwh6/08SC8R1Rh6ZOMfpFfPbMkxC/zCXUsVihnDEBg==",
         "declared_type": "inference"
       },
       {
@@ -170,7 +178,7 @@
           "flops": 412907345118,
           "energy_kj": 0.8123
         },
-        "signature": "9/JJLRKKQ9yIDue97tGHoYdPgB6IPNyFIKjUBOxvY03LEXucqYMIzQsa1e/MzayWP45cUYM51d+hJ8uOwsTrCA==",
+        "signature": "Dsi8zL9wejj628lm/Q/WpNtcgcdoexxmPg+i6AdAbOVS7A3z75nL3n0vH0iT8tJnbfST/wLaue6G2vqTstOHCw==",
         "declared_type": "training"
       },
       {
@@ -182,7 +190,7 @@
           "flops": 4300867562213,
           "energy_kj": 4.1234
         },
-        "signature": "1vmuCGlGA9J006PZPzpghmYM53DKu1/2hNjk713m9OcOmXxNSFQ0EG4md8drgWuucDHIldVH6ql7j65VhIU3AQ==",
+        "signature": "EhmOY5UYLQ0uA4boz6j3wj3Tz/upML+PfVkGgvErOYcdsKjGb6Brx6msmDgc7rosj11MOmZOi+tLE0CYySngDA==",
         "declared_type": "training"
       },
       {
@@ -194,7 +202,7 @@
           "flops": 2100982314560,
           "energy_kj": 3.9865
         },
-        "signature": "gKO80Wbvx2xfDJEOPgS2owZiBLkwrYUwPIvCJhvdRtqTxIPX7ccXUhtZglQNt/RRpUzwBd1HLu0U9ujtET/3AQ==",
+        "signature": "d6cfy5kaeNDgSSttcglLQYHQZ1Lbw4dI4UsIKh85eCj8eG5HGmPn8NGd1yVobkWdcvfOS8PCHT+SlfSmVL31DA==",
         "declared_type": "training"
       }
     ],
@@ -208,7 +216,7 @@
           "flops": 1290809673354,
           "energy_kj": 3.9992
         },
-        "signature": "wlAZ+01tB6Qein3zzsOj+pm1OOCSxMHLkrWr6jhZXAkde89iyOAtnjSKhv0o661R3IwzfyyPKh7Hx+IzNiJOCg==",
+        "signature": "ltUkHaKdLFNfT2mar16hkjumOasP1OPVBwQ/AherduX6denXSg5iSa4pcc+oc0jie2sQweDPY7BzHDSBYM8HBA==",
         "declared_type": "training"
       },
       {
@@ -220,7 +228,7 @@
           "flops": 1378839002745,
           "energy_kj": 4.0003
         },
-        "signature": "97XwH9epkRQypQ0nM28iepBtavHCiwgoT08RvTaChirBSF12tRMIGFs3/XKl6d2R458VjoaqHL+EL/qLmePDCA==",
+        "signature": "ZUK4OAPVbpOePWP4NPJ8tm2c/f0S3dstkl7mjM3pHhMpjmw2zZ82Zr3tCFKxnKrij8V4nUT2VPQqLEGrpS4GBA==",
         "declared_type": "training"
       },
       {
@@ -232,7 +240,7 @@
           "flops": 412345678901,
           "energy_kj": 0.8231
         },
-        "signature": "PVjhHRhNpDtEm6K2PUwPNbjv0cqaQEfuTRCd7fjUjhxLnQ50WujbwZKKRO2JseDgPZRDkwdHq2VLd+9fuzxxDw==",
+        "signature": "HzQ9gkLn4rqGv9FyIfJW/1Qum0ObS3jjpo4YV7quG3OF1C9YdP9go+qthVdPugWTOtQOoi9CCvFFJcxYghoqCw==",
         "declared_type": "inference"
       },
       {
@@ -244,7 +252,7 @@
           "flops": 1102278231405,
           "energy_kj": 3.7654
         },
-        "signature": "VgN1TUTJzc7kyo2HmKqnJW71zGmCoYzFPWJ8CBlletVtyaSbYy3EKoHKlX9RiEcJCM5OOdIehtyg8MDyI2izCA==",
+        "signature": "qNnLMxe9GnnxOnXNouqgDi7VK6L0B0Htt4kjq4E8a9MFXhw5U78Af+AnGAnp8SdkMmioeYcR6+yRkaxFWaGXDQ==",
         "declared_type": "training"
       },
       {
@@ -254,9 +262,9 @@
           "job_id": "job_002",
           "counter": 2,
           "flops": 49002345644,
-          "energy_kj": 0.3471
+          "energy_kj": 0.0847
         },
-        "signature": "HrYiqioPStqqB/o8IJ7AqRTgB8EdAl57NkSYU7deVGGFzQSkeFJV/FkyTBUc/DR5ROKUBjNFJ8k8yYokQ2YOAA==",
+        "signature": "pF6+3JT5av1R3bqJBZunL5py1nLgVO7aEiwGTJFEnQe2w8mHvtOz0B4Mp8+7oBMbJBtW78pWIE3INByrDXqcAg==",
         "declared_type": "inference"
       },
       {
@@ -268,7 +276,7 @@
           "flops": 941160997255,
           "energy_kj": 2.0898
         },
-        "signature": "Kd3WQL3G/C+vyy5+qq8fnZ1LJw5BAJGLbqA7I0qQVXzfEeO82z0oCHZHLcsF9F6DRz9xEHJ62rpz2kJziuzZAg==",
+        "signature": "5fYJ9yCj9umzsuQfsCTn0kfQK1J9ETChYfihkcB1T4pKYh/mVo2HDFh0VTWzdDtpRSIfjWuLWGR7vKEtCMN7Cw==",
         "declared_type": "training"
       },
       {
@@ -280,7 +288,7 @@
           "flops": 412345678901,
           "energy_kj": 0.8231
         },
-        "signature": "PVjhHRhNpDtEm6K2PUwPNbjv0cqaQEfuTRCd7fjUjhxLnQ50WujbwZKKRO2JseDgPZRDkwdHq2VLd+9fuzxxDw==",
+        "signature": "HzQ9gkLn4rqGv9FyIfJW/1Qum0ObS3jjpo4YV7quG3OF1C9YdP9go+qthVdPugWTOtQOoi9CCvFFJcxYghoqCw==",
         "declared_type": "inference"
       },
       {
@@ -292,7 +300,7 @@
           "flops": 389002636800,
           "energy_kj": 1.1033
         },
-        "signature": "49hya/NG+OhRg8WB1mZe6VmnBEdiaw5YoCWajChieLaDg9AoYGtBcByjDE+mT4/IlQ8do95marKBnt3WhOaMCQ==",
+        "signature": "3l3bEp98HFdCiLvluLsWJLpKvKnxjo807NQf/FPCEBzNmfJhnKPvX7kag11xJWMGraWlTLwJTg8DFFfdADmMBQ==",
         "declared_type": "inference"
       }
     ],
@@ -306,7 +314,7 @@
           "flops": 732997812692,
           "energy_kj": 1.6875
         },
-        "signature": "NqHfW1DicRA7U7XjMpJpdjI2Wv8j+CuAmIqjM6HxIllqdGVb2W5QPEEOP28pfXrW9ExzxrH2OPUcTMs0SSOxDw==",
+        "signature": "uJgQv2/oI5kEKjeDmoMBE6DWgePNyBKmy/RDYak08YSNctcRcGHYjT+QKqO0Ar0rriQsxHWvyRgycuz8DggfDQ==",
         "declared_type": "training"
       },
       {
@@ -318,7 +326,7 @@
           "flops": 511526472416,
           "energy_kj": 1.9193
         },
-        "signature": "uPyAO4290ONtk9Aci1pJ9aLQy9i5Gn0dFfW6fNp1a4dFJjM1asA3QaNtd1OCXw+2urLpVVHB2nESo81qp1QcAQ==",
+        "signature": "lh8BHv+iUHHInBAmHbv3WDIySq+ORiCY0HiQ6duxgI8+6rtt4Qe08EpT5OPAO1cZKVCfTeBNVg7HaJvsPugEDQ==",
         "declared_type": "inference"
       },
       {
@@ -330,7 +338,7 @@
           "flops": 237778549718,
           "energy_kj": 0.5134
         },
-        "signature": "lxMXZVeU1V3jqeOUNR3/TQTPMuVmZdNSV18DeAQAhR4GGney9KTIqrcyzTFR0gPro6kS0ee9E0CeytD5eDCeBA==",
+        "signature": "qr8Inl63gFd0sZVPEahnW/lXdfmWy8JvaqEj5LmD28Zokfxxy9sHnm9jnwNRwpnW2/kH0UnCEvfUSJjOeA+IDQ==",
         "declared_type": "inference"
       },
       {
@@ -342,7 +350,7 @@
           "flops": 49002345644,
           "energy_kj": 1.3471
         },
-        "signature": "6DqgmdHYWLvbEdkz4zQDHX6sGZAv6iAq+hAgr8CgEp3WlBQyZLkUwBt6t+nhO6XTm99moZZ1zmPcN1bKTv8dCQ==",
+        "signature": "ZC/JR75H2voede2M8p5fOgCj9+HDCwGrFwX3uE1uYgFNcQ0axRBXFvqVl2/Wc33TMX+2e3/+wxDwZq+0TVl3Bg==",
         "declared_type": "inference"
       },
       {
@@ -354,7 +362,7 @@
           "flops": 841360997255,
           "energy_kj": 1.879
         },
-        "signature": "KakW5NqktvLxwDdaI5FsptuNPyV7qnpWTuIibeKlO3DvCTx3mgRD2Lm/2OvV6qEujQ/4PL/JB3fGvcD8eA1qBw==",
+        "signature": "IU9JX1NomRDSFlyDW/yXyrVT1nAX1P0iEkOnCq55t2dL+IhnckQoyhCjKX7yM4gmzaHrVXFGSBprABZqsAISAA==",
         "declared_type": "training"
       },
       {
@@ -366,7 +374,7 @@
           "flops": 83765822903,
           "energy_kj": 1.1033
         },
-        "signature": "JEis2Any/yejW3LfjQp3Dhe3VFxrSXjg3i4CgJsThhkg/j8sYOJ0SNKc4I12oevA6+ZwHzzqnJASBB+ssYK3Aw==",
+        "signature": "Fs87uKwSfxC95kDH+VnPycu44TvipBSJPr9693OeKWsccQw0ZjnwpQ6KmWNrr1bg2lqwG39oYqVtU+dW1s8CAA==",
         "declared_type": "inference"
       }
     ],
@@ -380,7 +388,7 @@
           "flops": 2082351191802,
           "energy_kj": 4.4862
         },
-        "signature": "r9tnNAJBSLewJmk+LXj2y0r9uLxAYc+UTOZmCKylGU6UcSh4JfY0R9qz7yYuWBwqLBIo3H+ph5qMKWPP+qDyBQ==",
+        "signature": "dUX1YsJNVDbT+2BaEEijZNxjXxrMWYVwVyjLp7iBKme05J/1sHRhELIEDWI1Ic75EvM/s97pWS3OYi4yESxdCw==",
         "declared_type": "training"
       },
       {
@@ -392,7 +400,7 @@
           "flops": 1990729219294,
           "energy_kj": 4.5031
         },
-        "signature": "c+Hdxbt24h0HsoKtBbDKANeUGbnTk/KrmE1uor2kqDp4nN/6CTVwnxvg/WL4O1L4PwPBaJ4k/qQa8C7xLN73CA==",
+        "signature": "45W4IEDNFDEOVoxiBHPl5R0alxgMqBg3Cr39tKikaxsgGbEsn2fsommDXlhMGT2zWkDxfuqZV1iUtOCLDdojCA==",
         "declared_type": "training"
       },
       {
@@ -404,7 +412,7 @@
           "flops": 902114337560,
           "energy_kj": 1.9034
         },
-        "signature": "rhrmACABqow/2bHZXMSdg5/6fb5fWi1NDh7CMNeGGharVOMrZ/1GhyD4R2653X9jSEc9MjtZEXo7D2bhNP2VDg==",
+        "signature": "7ZsLKoL/lAUgBmI51V2mFxEsa737aTYGbF+73TiTXJaXFdLU5N4aD0XVhiHVEKxCcQ57K/GaXcnFtuCFlnkKCA==",
         "declared_type": "training"
       },
       {
@@ -416,7 +424,7 @@
           "flops": 1351023078853,
           "energy_kj": 3.0603
         },
-        "signature": "yiombwugog62vfrKDzzWC2V5WDDKFJn2mzjrr3Xh5Dc9ByX3ZLpyqs6zGQ7Rm1EHTsNYbMCkpGkqQRwk+nayCQ==",
+        "signature": "Vmr99YIonCsm8CFJnRAEqJvT3mpZ9plmQfiuHL3rzCA9u1bCW6SRB8ymLxg9oARnlZPUKQkje1fFFHPMc5acBQ==",
         "declared_type": "training"
       },
       {
@@ -428,7 +436,7 @@
           "flops": 1104118733902,
           "energy_kj": 2.4113
         },
-        "signature": "5xIVlR/y4B8S8T/Ky/Z2gk9AhuZwoo7/8fjW0vESUnS95dSwlMoanSnXVS+gP6YciGNswjttjYRegPySnpgWCQ==",
+        "signature": "zZk/fYxo2k/Nb7mVV5Hi0GklrZjRf3XbXRkwwINaFZvBMRNpBPK8WF6tJnT2A/x6FyJqgFALXVW3rWvLQMK/CQ==",
         "declared_type": "training"
       },
       {
@@ -440,7 +448,7 @@
           "flops": 2010143114551,
           "energy_kj": 4.169
         },
-        "signature": "KYx4/rOe/fRgAhxltA6HCEkBIOkm6VfudYLNHdT3VlVNcG/52uT3345eyPRBPxOFfOHj8upzTLV1ROceuR5gAA==",
+        "signature": "6GqxSFu1zLMVuU5q5krPJwURWRfkz1XksprV7PvMYev+qtPnqZ3jCkCB+emLb2GCBmKOSqOcotGvzkhhUX2fAg==",
         "declared_type": "training"
       },
       {
@@ -452,7 +460,7 @@
           "flops": 2130529037307,
           "energy_kj": 4.7695
         },
-        "signature": "H3Y80O2bFrCjuFMizu2XW3xm6vnG8QI/XIIu0shhwnN5gGVFOOXThGcloHs/WZrMnnchQpCtCLsokQScHtV3Dw==",
+        "signature": "nA/P4VOzNLhpuKS6+NkmsFkOMzCsC3kHKgm5RTN5qLqg1taheVE8ywS5W7UZlmsdOP9S/QLYXBCBDvqryAslCQ==",
         "declared_type": "training"
       },
       {
@@ -464,7 +472,7 @@
           "flops": 902114337560,
           "energy_kj": 1.9034
         },
-        "signature": "rhrmACABqow/2bHZXMSdg5/6fb5fWi1NDh7CMNeGGharVOMrZ/1GhyD4R2653X9jSEc9MjtZEXo7D2bhNP2VDg==",
+        "signature": "7ZsLKoL/lAUgBmI51V2mFxEsa737aTYGbF+73TiTXJaXFdLU5N4aD0XVhiHVEKxCcQ57K/GaXcnFtuCFlnkKCA==",
         "declared_type": "training"
       },
       {
@@ -476,8 +484,44 @@
           "flops": 2020492427381,
           "energy_kj": 4.7236
         },
-        "signature": "3ZpEps0kQverXLLhVZOPRcEfQDdWnuI+y2EljxNoiLIdocPdMQa92fDbGikAAjWApq2v6NXwtlc/UAU0SQcoAA==",
+        "signature": "KEVX6LcHqs48NBfbV/REZLiYWxpB2A4NBmUEp/GvNXdQdffv6gpgieEZ52WbTndrzewuTCJ1erqNKPtLAt1KBA==",
         "declared_type": "training"
+      },
+      {
+        "record_id": "L4-010",
+        "measured": {
+          "chip_id": "chip-25",
+          "job_id": "job_040",
+          "counter": 1,
+          "flops": 1000000000000,
+          "energy_kj": 3.15
+        },
+        "signature": "uXAD/9/eAgpxYFq7vCPcSx1euXaMjpQBzEVAKdA1G3ynbT5h7uq2EXJnn/XbSv0HwGhvVVxn4cEbaNqionMMAg==",
+        "declared_type": "training"
+      },
+      {
+        "record_id": "L4-011",
+        "measured": {
+          "chip_id": "chip-77",
+          "job_id": "job_041",
+          "counter": 1,
+          "flops": 512000000000,
+          "energy_kj": 1.02
+        },
+        "signature": "iaHCMnrOC3V3obmGHnrJ9BiYH2q+POKoXIucedLKvFZIno/Ax/BOIJ1SVii9MJdSagiE0xpcWLFqYcFuRl+SAw==",
+        "declared_type": "training"
+      },
+      {
+        "record_id": "L4-012",
+        "measured": {
+          "chip_id": "chip-26",
+          "job_id": "job_042",
+          "counter": 1,
+          "flops": 300000000000,
+          "energy_kj": 1.4
+        },
+        "signature": "+F4EZi2IMUeivW7LWEC8Uux84F2p+bvVK/YIdMpNMplIAasXHUlt8/EdGSfpfUPZ9/362Ow2duXswsrfn4btBw==",
+        "declared_type": "inference"
       }
     ]
   }

@@ -42,7 +42,7 @@
       "actor": "lab_02",
       "job_id": "job_018",
       "flops": 58556789011,
-      "energy_kj": 1.0765,
+      "energy_kj": 0.1077,
       "declared_type": "inference"
     },
     {
@@ -109,7 +109,7 @@
       "actor": "lab_01",
       "job_id": "job_002",
       "flops": 49002345644,
-      "energy_kj": 0.3471,
+      "energy_kj": 0.0847,
       "declared_type": "inference"
     },
     {
@@ -258,6 +258,31 @@
       "flops": 2020492427381,
       "energy_kj": 4.7236,
       "declared_type": "training"
+    },
+    {
+      "record_id": "L4-010",
+      "actor": "lab_25",
+      "job_id": "job_040",
+      "flops": 1000000000000,
+      "energy_kj": 3.15,
+      "declared_type": "training"
+    },
+    {
+      "record_id": "L4-011",
+      "chip_id": "chip-77",
+      "job_id": "job_041",
+      "flops": 512000000000,
+      "energy_kj": 1.02,
+      "declared_type": "training",
+      "attack": "unregistered"
+    },
+    {
+      "record_id": "L4-012",
+      "actor": "lab_26",
+      "job_id": "job_042",
+      "flops": 300000000000,
+      "energy_kj": 1.40,
+      "declared_type": "inference"
     }
   ]
 }

@@ -30,7 +30,7 @@ replay             FAIL  stale counter (replay)
 | File | Can Students View? | What It Does |
 |---|---|---|
 | `canonical.py` | yes | `to_bytes()`: the exact bytes that get signed |
-| `verify.py` | yes | `verify_signature(record, public_key)` -> True/False |
+| `../verify.py` | yes | `verify_signature(record, public_key)` -> True/False |
 | `registry.py` | yes | `load_registry()`; chip_id -> public key + owner |
 | `chip.py` | **no** | `Chip`: private key + counter, `report()` signs a reading |
 | `manufacturer.py` | **no** | `make_chip(seed, chip_id)` |

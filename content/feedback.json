@@ -1,0 +1,60 @@
+{
+  "reasons": {
+    "endorsement": {
+      "label": "Chip not in the registry",
+      "stamp": "BLOCKED: REGISTRY",
+      "unlock_level": 1,
+      "in_shift": "{chip} slipped through: not in the registry",
+      "debrief": "{chip} isn't registered. Anyone can make a key, so its seal proves nothing."
+    },
+    "integrity": {
+      "label": "Seal doesn't match the registered key",
+      "stamp": "BLOCKED: SEAL",
+      "unlock_level": 1,
+      "in_shift": "{owner} slipped through: broken seal",
+      "debrief": "The seal doesn't match {chip}'s key: something was edited after signing."
+    },
+    "flop_cap": {
+      "label": "Owner over the FLOP cap",
+      "stamp": "BLOCKED: FLOP CAP",
+      "unlock_level": 1,
+      "in_shift": "{owner} slipped through: over the FLOP cap",
+      "debrief": "{owner} reaches {total_flops} FLOPs, over {flop_limit}. Check the owner's total, not the job."
+    },
+    "freshness": {
+      "label": "Counter not newer than the last accepted",
+      "stamp": "BLOCKED: COUNTER",
+      "unlock_level": 2,
+      "in_shift": "{owner} slipped through: replayed report",
+      "debrief": "Counter {counter} isn't above {last_counter}: an old report sent again."
+    },
+    "energy_cap": {
+      "label": "Owner over the energy cap",
+      "stamp": "BLOCKED: ENERGY CAP",
+      "unlock_level": 2,
+      "in_shift": "{owner} slipped through: over the energy cap",
+      "debrief": "{owner} reaches {total_energy} kJ, over {energy_limit}."
+    },
+    "profile_mismatch": {
+      "label": "Measurements don't fit the declared type",
+      "stamp": "BLOCKED: PROFILE",
+      "unlock_level": 3,
+      "in_shift": "{owner} slipped through: workload doesn't match its type",
+      "debrief": "{ratio} FLOPs/kJ is outside the {type} band. The label doesn't fit the measurements."
+    },
+    "noise_margin": {
+      "label": "Within the noise margin of the energy cap",
+      "stamp": "BLOCKED: NOISE MARGIN",
+      "unlock_level": 4,
+      "in_shift": "{owner} slipped through: inside the noise margin",
+      "debrief": "{total_energy} kJ is within 5% of the cap, so it could really be over."
+    }
+  },
+  "other": {
+    "complaint_in_shift": "Complaint from {owner}: honest job blocked",
+    "false_block": "All checks passed: {passed}. What made you doubt it?",
+    "wrong_reason": "Right call, wrong reason: {correct}, not {chosen}.",
+    "waved_through": "Not inspected. {reason_message}",
+    "allow_ok": "Passed: {passed}."
+  }
+}
